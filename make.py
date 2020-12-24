@@ -71,7 +71,8 @@ if ("1" == config.option("update")):
     base.git_update("server")
     base.server_addons_checkout()
     base.git_update("document-server-integration")
-    
+    base.cmd_in_dir(base_dir + '/../', 'sed', ['-i', 's/exports.LICENSE_CONNECTIONS = 20/exports.LICENSE_CONNECTIONS = 9999/g', 'server/Common/sources/constants.js'], True)
+
   if (config.check_option("module", "server") or config.check_option("platform", "ios")):
     base.git_update("core-fonts")
 
